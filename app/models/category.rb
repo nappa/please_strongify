@@ -24,7 +24,7 @@ class Category < ActiveRecord::Base
   private
 
   def validate_item_exists
-    if self.items.any?
+    if self.items.any? || Category.count == 1
       errors.add(:base, "Cannot delete category")
       return false
     end
